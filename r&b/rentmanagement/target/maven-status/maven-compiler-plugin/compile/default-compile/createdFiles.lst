@@ -1,0 +1,6 @@
+com\client\rentmanagement\common\BaseEntity.class
+com\client\rentmanagement\tenant\Tenant.class
+com\client\rentmanagement\RentmanagementApplication.class
+com\client\rentmanagement\pricing\PricingPolicy.class
+com\client\rentmanagement\billing\entity\MeterReading.class
+com\client\rentmanagement\billing\repository\MeterReadingRepository.class
