@@ -1,30 +1,75 @@
 package com.client.rentmanagement.tenant;
 
-import com.client.rentmanagement.common.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "tenant")
-public class Tenant extends BaseEntity {
+public class Tenant {
 
-    @Column(nullable = false, length = 100)
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @Column(nullable = false)
     private String name;
 
-    @Column(name = "room_no", nullable = false, length = 20)
+    @Column(name = "room_no", nullable = false)
     private String roomNo;
 
-    @Column(name = "phone_no", nullable = false, length = 15)
+    @Column(name = "phone_no", nullable = false)
     private String phoneNo;
 
-    @Column(length = 100)
     private String email;
 
-    @Column(name = "meter_id", nullable = false, length = 50)
+    @Column(name = "meter_id", nullable = false)
     private String meterId;
+
+    @Column(nullable = false)
+    private boolean active = true;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+    /* ---------- getters ---------- */
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRoomNo() {
+        return roomNo;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getMeterId() {
+        return meterId;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }

@@ -1,28 +1,26 @@
 package com.client.rentmanagement.pricing;
 
-import com.client.rentmanagement.common.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "pricing_policy")
-public class PricingPolicy extends BaseEntity {
+public class PricingPolicy {
 
-    @Column(name = "room_rent", nullable = false, precision = 10, scale = 2)
+    @Id
+    @GeneratedValue
+    private UUID id;
+
+    @Column(name = "room_rent", nullable = false)
     private BigDecimal roomRent;
 
-    @Column(name = "unit_price", nullable = false, precision = 10, scale = 2)
+    @Column(name = "unit_price", nullable = false)
     private BigDecimal unitPrice;
 
-    @Column(name = "common_area_unit", nullable = false, precision = 10, scale = 2)
+    @Column(name = "common_area_unit", nullable = false)
     private BigDecimal commonAreaUnit;
 
     @Column(name = "effective_from", nullable = false)
@@ -30,4 +28,35 @@ public class PricingPolicy extends BaseEntity {
 
     @Column(name = "effective_to")
     private LocalDate effectiveTo;
+
+    @Column(nullable = false)
+    private boolean active = true;
+
+    @Column(name = "created_at", updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    // getters only (immutable pricing is good)
+
+    public BigDecimal getRoomRent() {
+        return roomRent;
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public BigDecimal getCommonAreaUnit() {
+        return commonAreaUnit;
+    }
+
+    public LocalDate getEffectiveFrom() {
+        return effectiveFrom;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
 }
