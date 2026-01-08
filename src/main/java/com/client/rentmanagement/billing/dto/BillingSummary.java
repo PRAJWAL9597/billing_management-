@@ -18,7 +18,7 @@ public class BillingSummary {
 
     private BigDecimal totalAmount;
 
-    // setters only (DTO)
+    // -------- setters --------
 
     public void setTenantId(UUID tenantId) {
         this.tenantId = tenantId;
@@ -50,5 +50,39 @@ public class BillingSummary {
 
     public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    // -------- getters (REQUIRED) --------
+
+    public UUID getTenantId() {
+        return tenantId;
+    }
+
+    public YearMonth getMonth() {
+        return month;
+    }
+
+    public BigDecimal getRoomRent() {
+        return roomRent;
+    }
+
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
+    }
+
+    public long getUnitsConsumed() {
+        return unitsConsumed;
+    }
+
+    public BigDecimal getElectricityCharge() {
+        return electricityCharge;
+    }
+
+    public BigDecimal getCommonAreaCharge() {
+        return commonAreaCharge;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
     }
 }

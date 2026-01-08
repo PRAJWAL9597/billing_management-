@@ -5,11 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface InvoiceRepository extends JpaRepository<Invoice, UUID> {
 
-    List<Invoice> findByTenantIdOrderByBillingMonthDesc(UUID tenantId);
+    Optional<Invoice> findByTenantIdAndBillingMonth(UUID tenantId, LocalDate billingMonth);
 
-    boolean existsByTenantIdAndBillingMonth(UUID tenantId, LocalDate billingMonth);
+    List<Invoice> findAllByTenantId(UUID tenantId);
 }
